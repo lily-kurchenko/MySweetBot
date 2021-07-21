@@ -7,6 +7,9 @@ import six
 import pandas as pd
 import lxml
 
+BOT_TOKEN = ''
+WEATHER_TOKEN = ''
+
 url = 'https://msk.kinoafisha.info/movies/'
 html_text = requests.get(url).text
 soup = BeautifulSoup(html_text, 'lxml')
@@ -61,14 +64,14 @@ def find_sessions(ind):
 
 
 def show_weather():
-    weather_url = "https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=8c42a387b81b74b1cbe4ce776f12aff1"
+    weather_url = f"https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid={WEATHER_TOKEN}"
     response = json.loads(requests.get(weather_url).text)
     return f"Будьте внимательны с погодой. \
     Температура на улице {round(response['main']['temp'] - 273.15, 1)} градусов Цельсия, ощущается как \
     {round(response['main']['feels_like'] - 273.15, 1)}."
 
 
-bot = telebot.TeleBot('1920321029:AAG-k8Gf3skuSSraYgLtsoao6vVjzpusPJc')
+bot = telebot.TeleBot(BOT_TOKEN)
 my_commands = {'/start' '/top', '/help', '/1', '/first'}
 
 
