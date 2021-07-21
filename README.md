@@ -1,2 +1,3 @@
 # MySweetBot
-KinoAfisha tg bot
+KinoAfishaBot
+tg @mysweetkinobot
